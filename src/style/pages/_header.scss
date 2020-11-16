@@ -1,0 +1,5 @@
+.header {
+  &-inner {
+    @include d-flex(space-between);
+  }
+}
