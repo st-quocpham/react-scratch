@@ -6,17 +6,6 @@ const mode = (mode = "development") => {
   return mode;
 };
 
-const loaderHTML = () => {
-  return {
-    test: /\.html$/,
-    use: [
-      {
-        loader: "html-loader",
-      },
-    ],
-  };
-};
-
 const loaderCSS = (
   options = { implementation: require("sass"), sourceMap: true }
 ) => {
@@ -41,16 +30,20 @@ const loaderFont = () => {
   return { test: /\.(woff|woff2|eot|ttf|otf)$/i, type: "asset/resource" };
 };
 // File loader
-const loaderFile = () => {
-  return {
-    test: /\.(png|jpe?g|gif)$/i,
-    use: [
-      {
-        loader: "file-loader",
-      },
-    ],
-  };
-};
+const loaderFile = [
+  { test: /\.(png|jpg|jpeg|gif|svg)$/, loader: "url-loader?limit=100000" },
+  { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: ["@svgr/webpack"] },
+  {
+    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    loader: "url-loader?limit=10000&mimetype=application/font-woff",
+  },
+  {
+    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    loader: "file-loader",
+  },
+  { test: /\.html$/, loader: "html-loader" },
+];
+
 const loaderTS = () => {
   return {
     test: /\.tsx?$/,
@@ -87,7 +80,6 @@ const cleanWPPlugin = (option = true) => {
 module.exports = {
   mode: mode(),
   entry: "./src/index.tsx",
-  // entry: "./src/index.js"
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
@@ -103,16 +95,14 @@ module.exports = {
     hot: true,
   },
   plugins: [
-    // new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }), // Not clear file - use with webpack only
-    // new CleanWebpackPlugin(), // Clear file after bundle - use with webpack only
-    cleanWPPlugin(),
+    cleanWPPlugin(), // Clear file after bundle - use with webpack, not webpack-dev-server
     new HtmlWebpackPlugin({
       inject: true,
       template: "./index.html",
     }),
   ],
   module: {
-    rules: [loaderCSS(), loaderFile(), loaderTS(), loaderJS()],
+    rules: [loaderCSS(), ...loaderFile, loaderTS(), loaderJS()],
   },
   // watch: true,
   // watchOptions: watchOptions(),
