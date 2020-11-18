@@ -1,14 +1,16 @@
 import React from 'react';
-import appIcon from '../../assets/app-icon.png';
 
 function Header() {
   return (
     <header className="header">
       <div className="header-inner">
-        <div className="header-icon">
-          <img src={appIcon} alt="App Icon" />
+        <div className="header-search">
+          <input className="header-input input-reset" type="text" placeholder="Your search..." />
+          <button className="header-btn btn-reset" title="Search">
+            <i className="fas fa-search icon" />
+          </button>
         </div>
-        <p className="header-text">Save your TODO</p>
+        <p className="header-text">Notes</p>
       </div>
     </header>
   );

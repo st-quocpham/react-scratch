@@ -70,3 +70,21 @@
   display: $display;
   position: $pos;
 }
+// Transition
+@mixin trans($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+// Box shadow
+@function shadow-var($color: 0.2) {
+  @return 0 1px 1px rgba(0, 0, 0, $color), 0 2px 2px rgba(0, 0, 0, $color),
+    0 4px 4px rgba(0, 0, 0, $color), 0 8px 8px rgba(0, 0, 0, $color);
+}
+@mixin shadow($shadow: shadow-var()) {
+  box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+}

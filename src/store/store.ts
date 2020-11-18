@@ -2,12 +2,16 @@ import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 
 // Combine reducers
-import { combineReducers } from 'redux';
-import counterReducer from './slicer/counter';
+// import { combineReducers } from 'redux';
+import portalReducer from './slicer/portal';
+import boxColorReducer from './slicer/boxColor';
+import noteReducer from './slicer/note';
 
-const rootReducer = combineReducers({
-  counter: counterReducer,
-});
+const rootReducer = {
+  portal: portalReducer,
+  boxColor: boxColorReducer,
+  note: noteReducer,
+};
 
 // Create store
 const store = configureStore({

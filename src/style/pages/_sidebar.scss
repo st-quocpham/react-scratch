@@ -1,0 +1,22 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  left: 0;
+  width: 5rem;
+  border-right: 1px solid map-get($color, border);
+  &-inner {
+    padding: 1rem;
+  }
+  &-icon {
+    @include box(inherit);
+  }
+  &-btn {
+    margin-top: 2rem;
+    width: 100%;
+    text-align: center;
+    .icon {
+      font-size: map-get($f-size, xxl);
+    }
+  }
+}

@@ -7,12 +7,12 @@ $bps: (
   xs: 375px,
 );
 // Font family
-$font-family: (
+$f-family: (
   //Roboto
   Roboto: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap'
 );
 // Font size
-$font-size: (
+$f-size: (
   // Default: 16px
   xxl: 32px,
   xl: 24px,
@@ -23,7 +23,7 @@ $font-size: (
   xxs: 10px
 );
 // Font weight
-$font-weight: (
+$f-weight: (
   // Default: normal 400
   light: 300,
   normal: 400,
@@ -31,4 +31,15 @@ $font-weight: (
   boldest: 900
 );
 // Color
-$color: ();
+$color: (
+  text: #313131,
+  sub: #5c5c5c,
+  primary: #fefefe,
+  light: rgb(240, 240, 240),
+  border: rgb(155, 155, 155),
+  placeholder: rgb(170, 170, 170),
+  btn: #616161,
+  btn-hover: #141414,
+  link: #134ec2,
+  link-hover: #cc46c1,
+);

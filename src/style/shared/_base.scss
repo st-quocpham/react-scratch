@@ -1,0 +1,36 @@
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  font-family: map-get($f-family, Roboto), sans-serif;
+  font-size: px2rem(16px);
+  font-weight: map-get($f-weight, normal);
+  background-color: map-get($color, primary);
+  color: map-get($color, text);
+  position: relative;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+input,
+textarea {
+  outline: none;
+}
+textarea {
+  display: block;
+}
+.trans {
+  transition: 0.3s;
+}
+button {
+  cursor: pointer;
+}
