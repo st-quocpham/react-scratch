@@ -1,0 +1,90 @@
+// display flex
+@mixin d-flex($justify: center, $align: center, $dir: row, $wrap: wrap) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+}
+// display grid
+@mixin d-grid($col: 1fr, $row: 1fr, $justify: center, $align: stretch) {
+  display: grid;
+  grid-template-columns: $col;
+  grid-template-rows: $row;
+  justify-content: $justify;
+  align-content: $align;
+}
+// Responsive
+@mixin res($bp, $max-or-min: max) {
+  // default is max
+  // If the key exists in the map
+  @if map-has-key($bps, $bp) {
+    $bp-value: map-get($bps, $bp);
+
+    @if $max-or-min == max {
+      @media (#{$max-or-min}-width: $bp-value - 1) {
+        @content;
+      }
+    } @else if $max-or-min == min {
+      @media (#{$max-or-min}-width: $bp-value) {
+        @content;
+      }
+    } @else {
+      @warn "Invalid breakpoint: #{$bp}.";
+    }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "There no #{$bp}. Available breakpoints are: #{map-keys($bps)}.";
+  }
+}
+// Responsive between
+@mixin res-btw($min, $max) {
+  @if map-has-key($bps, $min) and map-has-key($bps, $max) {
+    $min-bp: map-get($bps, $min);
+    $max-bp: map-get($bps, $max);
+    @media (min-width: $min-bp) and (max-width: $max-bp) {
+      @content;
+    }
+  } @else {
+    @if map-has-key($bps, $min) == false {
+      @warn "#{$min} breakpoint not available. Available breakpoints are: #{map-keys($bps)}.";
+    }
+    @if map-has-key($bps, $max) == false {
+      @warn "#{$max} breakpoint not available. Available breakpoints are: #{map-keys($bps)}.";
+    }
+  }
+}
+// Convert px to rem
+@function px2rem($px: 0px, $base: 16px) {
+  @return ($px / $base) * 1rem;
+}
+// Box
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+// Pseudo
+@mixin pseudo($display: inline-block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+// Transition
+@mixin trans($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+// Box shadow
+@function shadow-var($color: 0.2) {
+  @return 0 1px 1px rgba(0, 0, 0, $color), 0 2px 2px rgba(0, 0, 0, $color),
+    0 4px 4px rgba(0, 0, 0, $color), 0 8px 8px rgba(0, 0, 0, $color);
+}
+@mixin shadow($shadow: shadow-var()) {
+  box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+}

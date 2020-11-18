@@ -1,0 +1,17 @@
+.main {
+  margin: 4rem 0 4rem 5rem;
+  padding: 0 2rem;
+  &-inner {
+    @include d-grid(1fr 1fr 1fr 1fr);
+    gap: px2rem(20px);
+  }
+  &-link {
+    cursor: pointer;
+    color: map-get($color, link);
+    @include trans(0.3s);
+    &:hover {
+      border-bottom: 1px solid map-get($color, link-hover);
+      color: map-get($color, link-hover);
+    }
+  }
+}

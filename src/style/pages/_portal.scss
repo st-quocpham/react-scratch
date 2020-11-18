@@ -1,0 +1,49 @@
+.portal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(140, 140, 140, 0.3);
+  &-inner {
+    @extend .pos-center;
+    @extend .invisible;
+    @include trans(0.5s);
+    width: px2rem(400px);
+    padding: 2rem;
+    border-radius: 2rem;
+    @include shadow();
+  }
+  &-title {
+    color: map-get($color, primary);
+    text-align: center;
+    font-size: map-get($f-size, xl);
+    margin-bottom: 2rem;
+  }
+  &-textarea {
+    @include box(100%, px2rem(250px));
+    padding: px2rem(10px);
+    resize: none;
+    border: none;
+    border-radius: 1rem;
+    font-family: map-get($f-family, Roboto), sans-serif;
+    background-color: map-get($color, primary);
+  }
+  &-content {
+    color: map-get($color, primary);
+  }
+  &-groupBtn {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  &-btn {
+    margin: 0 px2rem(10px);
+    padding: 1rem 2rem;
+    color: map-get($color, primary);
+    background-color: map-get($color, btn);
+    &:hover {
+      background-color: map-get($color, btn-hover);
+    }
+  }
+}

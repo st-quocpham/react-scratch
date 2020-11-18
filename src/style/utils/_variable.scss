@@ -1,0 +1,45 @@
+// Breakpoints
+$bps: (
+  xl: 1200px,
+  lg: 992px,
+  md: 768px,
+  sm: 576px,
+  xs: 375px,
+);
+// Font family
+$f-family: (
+  //Roboto
+  Roboto: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap'
+);
+// Font size
+$f-size: (
+  // Default: 16px
+  xxl: 32px,
+  xl: 24px,
+  lg: 20px,
+  md: 18px,
+  sm: 14px,
+  xs: 12px,
+  xxs: 10px
+);
+// Font weight
+$f-weight: (
+  // Default: normal 400
+  light: 300,
+  normal: 400,
+  bold: 700,
+  boldest: 900
+);
+// Color
+$color: (
+  text: #313131,
+  sub: #5c5c5c,
+  primary: #fefefe,
+  light: rgb(240, 240, 240),
+  border: rgb(155, 155, 155),
+  placeholder: rgb(170, 170, 170),
+  btn: #616161,
+  btn-hover: #141414,
+  link: #134ec2,
+  link-hover: #cc46c1,
+);

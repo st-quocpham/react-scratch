@@ -1,0 +1,47 @@
+.btn-reset {
+  transition: 0.3s;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.input-reset {
+  &::placeholder {
+    font-style: italic;
+    color: map-get($color, placeholder);
+  }
+  border: 1px solid map-get($color, light);
+  padding: px2rem(10px) px2rem(24px);
+  @include trans(0.4s);
+  &:focus {
+    border: 1px solid map-get($color, border);
+  }
+}
+.icon {
+  color: map-get($color, btn);
+  @include trans(0.2s);
+  &:hover {
+    color: map-get($color, btn-hover);
+    transform: scale(1.2);
+  }
+}
+.pos-absolute {
+  position: absolute;
+  content: '';
+  clear: both;
+}
+.pos-center {
+  @extend .pos-absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.invisible {
+  opacity: 0;
+  visibility: hidden;
+}
+.visible {
+  opacity: 1;
+  visibility: visible;
+}

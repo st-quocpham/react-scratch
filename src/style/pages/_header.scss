@@ -1,0 +1,29 @@
+.header {
+  margin-left: 5rem;
+  padding-top: 1rem;
+  &-inner {
+    padding: 0 2rem;
+  }
+  &-search {
+    position: relative;
+    width: 35rem;
+  }
+  &-input {
+    width: inherit;
+    border-radius: 2rem;
+    font-size: map-get($color, xxxl);
+  }
+  &-btn {
+    @extend .pos-absolute;
+    top: 0;
+    bottom: 0;
+    right: 1rem;
+    .icon {
+      font-size: map-get($f-size, md);
+    }
+  }
+  &-text {
+    font-size: map-get($f-size, xxl);
+    margin-top: px2rem(30px);
+  }
+}

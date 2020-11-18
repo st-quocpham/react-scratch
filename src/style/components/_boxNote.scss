@@ -1,0 +1,21 @@
+.box {
+  height: px2rem(250px);
+  border-radius: 1.5rem;
+  padding: px2rem(30px);
+  color: map-get($color, primary);
+  @include shadow();
+  @include trans(0.4s);
+  &:hover {
+    transform: translateY(-10px);
+    @include shadow(shadow-var(0.3));
+  }
+  &-inner {
+    @include d-flex(space-between, space-between, column);
+    @include box(100%);
+  }
+  &-bottom {
+    @include d-flex(space-between);
+    .icon {  color: map-get($color, primary);
+    }
+  }
+}
